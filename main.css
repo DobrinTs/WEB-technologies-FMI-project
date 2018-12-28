@@ -1,0 +1,14 @@
+body {
+  background-color: #eae7dc;
+}
+
+.errorMessage {
+  display: block;
+  color: red;
+  font-size: 12px;
+  text-align: center;
+}
+
+.hide {
+  display: none;
+}
