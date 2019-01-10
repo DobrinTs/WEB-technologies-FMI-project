@@ -7,9 +7,9 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>Home</title>
-  <link href="home.css" rel="stylesheet" />
-  <link href="navAndHeader.css" rel="stylesheet" />
+  <title>New Trip</title>
+  <!-- <link href="home.css" rel="stylesheet" /> -->
+  <link href="../home/navAndHeader.css" rel="stylesheet" />
   <link href="../main.css" rel="stylesheet" />
 </head>
 
@@ -20,8 +20,8 @@
 
   <nav>
     <ul class="navList">
-      <li class="navListItem"> <a href="" class="navLink">Home</a> </li>
-      <li class="navListItem"> <a href="../newTrip" class="navLink">New Trip</a> </li>
+      <li class="navListItem"> <a href="../home" class="navLink">Home</a> </li>
+      <li class="navListItem"> <a href="" class="navLink">New Trip</a> </li>
     </ul>
   </nav>
 </body>
