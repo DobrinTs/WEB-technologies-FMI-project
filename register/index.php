@@ -11,7 +11,7 @@
   <link href="../login/login.css" rel="stylesheet" />
   <link href="../main.css" rel="stylesheet" />
   <script defer src="../utils/ajax.js"></script>
-  <script defer src="../utils/loginRegisterHandlers.js"></script>
+  <script defer src="../utils/formHandlers.js"></script>
   <script defer src="register.js"></script>
 </head>
 
