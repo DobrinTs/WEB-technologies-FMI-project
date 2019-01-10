@@ -11,6 +11,8 @@
   <link href="home.css" rel="stylesheet" />
   <link href="navAndHeader.css" rel="stylesheet" />
   <link href="../main.css" rel="stylesheet" />
+  <script defer src="../utils/ajax.js"></script>
+  <script defer src="logout.js"></script>
 </head>
 
 <body>
@@ -23,7 +25,9 @@
       <li class="navListItem"> <a href="" class="navLink">Home</a> </li>
       <li class="navListItem"> <a href="../newTrip" class="navLink">New Trip</a> </li>
     </ul>
+    <button type="button" id="logoutButton" class="logoutButton">Logout</button>
   </nav>
+
 </body>
 
 </html>

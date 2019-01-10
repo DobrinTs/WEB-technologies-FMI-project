@@ -1,3 +1,7 @@
+nav {
+  position: relative;
+}
+
 .siteHeader {
   color: #e85a4f;
   font-size: 35px;
@@ -41,4 +45,17 @@
   font-weight: bold;
   transition: 100ms linear;
   color: black;
+  background-color: #e85a4f;
+}
+
+.logoutButton {
+  position: absolute;
+  top: 20%;
+  right: 2%;
+  border: 1px solid #8e8d8a;
+  border-radius: 6px;
+  height: 60%;
+  background-color: #e85a4f;
+  font-size: 18px;
+  font-weight: bold;
 }
