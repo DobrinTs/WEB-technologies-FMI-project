@@ -1,0 +1,20 @@
+.newTripForm {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: auto;
+  align-items: center;
+  border: 2px solid #8e8d8a;
+  background-color: #d8c3a5;
+}
+
+.inputGroup {
+  display: block;
+  margin: 10px 0;
+}
+
+.tripNameLabel {
+  font-size: 18px;
+  color: #e85a4f;
+  font-weight: bold;
+}
