@@ -58,7 +58,7 @@ function handleSubmit(event) {
   var json = JSON.stringify(formData);
 
   ajax('../server/login/', {
-    success: () => window.location.replace('../home'),
+    success: () => window.location.assign('../home'),
     error: formErrorHandler,
     method: 'POST',
     contentType: 'application/json',

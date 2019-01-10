@@ -1,3 +1,7 @@
+<?php
+  include('../utils/redirects.php');
+  redirectIfLoggedIn();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -21,7 +25,7 @@
     </header>
     <strong id="formError" class="hide"></strong>
 
-    <form method="post" action="" class="flexForm" id="loginForm">
+    <form method="post" action="" class="formStyles" id="loginForm">
       <label id="username" class="hide"></label>
       <input type="text" name="username" placeholder="Username" class="formItem">
 

@@ -46,7 +46,8 @@
       $registerStatement->execute([$dataArray['username'], $passwordHash]);
 
       session_start();
-      $_SESSION['user'] = $dataArray['username'];
+      $_SESSION['username'] = $dataArray['username'];
+      $_SESSION['userId'] = $user['id'];
       $_SESSION['session_start'] = time();
 
       echo 'Успешна регистрация';

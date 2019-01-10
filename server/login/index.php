@@ -26,7 +26,7 @@
           $configs->DB_PASSWORD
       );
 
-      $checkUsernameStatement = $conn->prepare("SELECT * from Users where username=?");
+      $checkUsernameStatement = $conn->prepare("SELECT * FROM Users WHERE username=?");
       $checkUsernameStatement->execute([$dataArray['username']]);
 
       $user = $checkUsernameStatement->fetch();
@@ -44,7 +44,8 @@
 
 
       session_start();
-      $_SESSION['user'] = $dataArray['username'];
+      $_SESSION['username'] = $dataArray['username'];
+      $_SESSION['userId'] = $user['id'];
       $_SESSION['session_start'] = time();
 
       echo 'Успешен вход';
