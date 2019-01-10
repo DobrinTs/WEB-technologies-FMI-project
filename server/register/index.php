@@ -32,10 +32,10 @@
           $configs->DB_PASSWORD
       );
 
-      $checkUsernameStatement = $conn->prepare("SELECT * from Users where username=?");
-      $checkUsernameStatement->execute([$dataArray['username']]);
+      $getUserStatement = $conn->prepare("SELECT * from Users where username=?");
+      $getUserStatement->execute([$dataArray['username']]);
 
-      if ($checkUsernameStatement->fetch()) {
+      if ($getUserStatement->fetch()) {
           header('HTTP/1.1 409 Username is taken');
           echo 'Името е заето';
           return;
@@ -44,6 +44,9 @@
       $passwordHash = password_hash($dataArray['password'], PASSWORD_DEFAULT);
       $registerStatement = $conn->prepare("INSERT INTO Users (username, password) VALUES (?, ?)");
       $registerStatement->execute([$dataArray['username'], $passwordHash]);
+
+      $getUserStatement->execute([$dataArray['username']]);
+      $user = $getUserStatement->fetch();
 
       session_start();
       $_SESSION['username'] = $dataArray['username'];

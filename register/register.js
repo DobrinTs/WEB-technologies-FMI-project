@@ -3,12 +3,17 @@ form.addEventListener('submit', validateAndHandleSubmit);
 
 function validateAndHandleSubmit(event) {
   event.preventDefault();
-  if (validate(event)) {
-    handleSubmit(event);
+  if (validateRegisterData()) {
+    var formData = {
+      username: form.elements[0].value,
+      password: form.elements[1].value,
+      confirmPassword: form.elements[2].value
+    }
+    handleSubmit('../server/register/', formData);
   }
 }
 
-function validate(event) {
+function validateRegisterData() {
   var usernameField = form.elements[0];
   var pass1Field = form.elements[1];
   var pass2Field = form.elements[2];
@@ -47,33 +52,4 @@ function validate(event) {
   }
 
   return true;
-}
-
-function handleSubmit(event) {
-  var usernameField = form.elements[0];
-  var pass1Field = form.elements[1];
-  var pass2Field = form.elements[2];
-
-  var formData = {
-    username: usernameField.value,
-    password: pass1Field.value,
-    confirmPassword: pass2Field.value
-  }
-
-  var json = JSON.stringify(formData);
-
-  ajax('../server/register/', {
-    success: () => window.location.assign('../home'),
-    error: formErrorHandler,
-    method: 'POST',
-    contentType: 'application/json',
-    data: json
-  });
-}
-
-function formErrorHandler(error) {
-  console.log(error);
-  var formError = document.getElementById('formError');
-  formError.textContent = error;
-  formError.setAttribute('class', 'errorMessage');
 }

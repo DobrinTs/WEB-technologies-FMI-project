@@ -11,12 +11,16 @@ form.addEventListener('submit', validateAndHandleSubmit);
 
 function validateAndHandleSubmit(event) {
   event.preventDefault();
-  if (validate(event)) {
-    handleSubmit(event);
+  if (validateLoginData()) {
+    var formData = {
+      username: form.elements[0].value,
+      password: form.elements[1].value,
+    }
+    handleSubmit('../server/login/', formData);
   }
 }
 
-function validate(event) {
+function validateLoginData(event) {
   var usernameField = form.elements[0];
   var passwordField = form.elements[1];
 
@@ -44,30 +48,4 @@ function validate(event) {
   }
 
   return true;
-}
-
-function handleSubmit(event) {
-  var usernameField = form.elements[0];
-  var passwordField = form.elements[1];
-
-  var formData = {
-    username: usernameField.value,
-    password: passwordField.value,
-  }
-
-  var json = JSON.stringify(formData);
-
-  ajax('../server/login/', {
-    success: () => window.location.assign('../home'),
-    error: formErrorHandler,
-    method: 'POST',
-    contentType: 'application/json',
-    data: json
-  });
-}
-
-function formErrorHandler(error) {
-  var formError = document.getElementById('formError');
-  formError.textContent = error;
-  formError.setAttribute('class', 'errorMessage');
 }

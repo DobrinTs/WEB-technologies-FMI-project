@@ -1,6 +1,6 @@
 <?php
   include('../utils/redirects.php');
-  redirectIfNotLoggedIn();
+  // redirectIfNotLoggedIn();
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
