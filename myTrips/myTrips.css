@@ -1,0 +1,21 @@
+.mainHeading {
+  text-align: center;
+  color: #e85a4f;
+}
+
+.customSelect {
+  display: block;
+  width: 30%;
+  margin: auto;
+  text-align-last:center;
+}
+
+.mainArticleHeading {
+  font-size: 20px;
+  text-align: center;
+}
+
+.subArticleHeading {
+  font-size: 18px;
+  text-align: center;
+}

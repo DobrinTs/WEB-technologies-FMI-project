@@ -33,10 +33,10 @@
   <main>
     <section>
       <header>
-        <h1 id="tripSectionHeading"></h1>
+        <h1 id="tripSectionHeading" class="mainHeading"></h1>
       </header>
       <select id="tripSelect" name="tripSelect" class="hide">
-        <option value="">--Избери--</option>
+        <option value="" class="customOption">-----Избери-----</option>
       </select>
       <article class="hide" id="tripInfo"></article>
     </section>

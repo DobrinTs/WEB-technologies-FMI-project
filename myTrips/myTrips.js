@@ -12,16 +12,12 @@ function parseTrips(tripsJSON) {
   trips = JSON.parse(tripsJSON);
 
   if (trips.length === 0) {
-    setNoTripsSectionHeading();
+    setHeadingContent('tripSectionHeading', 'Опаа. Все още нямате пътешествия :/');
     return;
   }
 
   setHeadingContent('tripSectionHeading', 'Избери пътешествие, за да видиш детайли');
   addTripsAsOptions();
-}
-
-function changeTripSectionHeading() {
-  setHeadingContent('tripSectionHeading', 'Опаа. Все още нямате пътешествия :/');
 }
 
 function setHeadingContent(headingId, content) {
@@ -32,7 +28,7 @@ function setHeadingContent(headingId, content) {
 function addTripsAsOptions() {
   var select = document.getElementById('tripSelect');
   select.addEventListener('change', handleSelectChange);
-  select.setAttribute('class', '');
+  select.setAttribute('class', 'customSelect');
 
   var i;
   for (i = 0; i < trips.length; i++) {
@@ -51,7 +47,14 @@ function handleSelectChange(event) {
     return;
   } else {
     article.innerHTML = "";
-    addHeaderToArticle(article, event.target.value);
+    var articleHeader = document.createElement('header');
+    var articleH1 = document.createElement('h1');
+    articleH1.setAttribute('class', 'mainArticleHeading');
+    var h1content = `Пътешествие: ${event.target.value}`
+    articleH1.appendChild(document.createTextNode(h1content));
+    articleHeader.appendChild(articleH1);
+    article.appendChild(articleHeader);
+
 
     var tripId = getTripIdByName(event.target.value);
     ajax(`../server/myTrips/getTripStops.php?tripId=${tripId}`, {
@@ -59,14 +62,6 @@ function handleSelectChange(event) {
       error: console.error
     });
   }
-}
-
-function addHeaderToArticle(article, headerText) {
-  var articleHeader = document.createElement('header');
-  var articleH1 = document.createElement('h1');
-  articleH1.appendChild(document.createTextNode(headerText));
-  articleHeader.appendChild(articleH1);
-  article.appendChild(articleHeader);
 }
 
 function getTripIdByName(name) {
@@ -85,7 +80,13 @@ function addTripStopsToPage(stopsJSON) {
   for (var i = 0; i < stops.length; i++) {
     var subArticle = document.createElement('article');
     var stopName = `Спирка ${stops[i].stopIndex}: ${stops[i].placeName}`;
-    addHeaderToArticle(subArticle, stopName);
+
+    var articleHeader = document.createElement('header');
+    var articleH1 = document.createElement('h2');
+    articleH1.setAttribute('class', 'subArticleHeading');
+    articleH1.appendChild(document.createTextNode(stopName));
+    articleHeader.appendChild(articleH1);
+    subArticle.appendChild(articleHeader);
 
     var stopTime = document.createElement('p');
     stopTime.appendChild(document.createTextNode(
