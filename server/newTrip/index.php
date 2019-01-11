@@ -1,6 +1,5 @@
 <?php
-  include('../utils/dbUtils.php');
-  session_start();
+  include('../utils/TripDbConnector.php');
 
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $rawData = file_get_contents('php://input');
@@ -12,30 +11,17 @@
           return;
       }
 
-      $conn = createPDO();
-      var_dump($dataArray);
-
-      $createTripStatement = $conn->prepare("INSERT INTO Trips (ownerId, name) VALUES (?, ?)");
-      $createTripStatement->execute([$_SESSION['userId'], $dataArray['tripName']]);
-
-      $getTripStatement = $conn->prepare("SELECT * FROM Trips
-        WHERE ownerId = ? AND name = ?");
-      $getTripStatement->execute([$_SESSION['userId'], $dataArray['tripName']]);
-      $trip = $getTripStatement->fetch();
-
-      $crateStopStatement = $conn->prepare("INSERT INTO TripStops
-        (tripId, stopIndex, placeName, plannedTime) VALUES (?, ?, ?, ?)");
-
-      $dataArrayKeys = array_keys($dataArray);
-      for ($i = 1; $i < count($dataArrayKeys); $i+=2) {
-          $stopName = $dataArray[$dataArrayKeys[$i]];
-          $stopTime = $dataArray[$dataArrayKeys[$i]];
-          $stopIndex = ($i + 1) / 2;
-          $crateStopStatement->execute([$trip['id'], $stopIndex, $stopName, $stopTime]);
+      $tripDb = new TripDbConnector();
+      if ($tripDb->tripNameTaken($dataArray['tripName'])) {
+          header('HTTP/1.1 409 Trip name taken');
+          echo 'Името е заето';
+          return;
       }
 
+      $trip = $tripDb->newTrip($dataArray);
       echo "Great Success";
   }
+
 
   function invalidTripName($tripName)
   {

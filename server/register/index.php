@@ -1,5 +1,5 @@
 <?php
-  include('../utils/dbUtils.php');
+  include('../utils/UserDbConnector.php');
 
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $rawData = file_get_contents('php://input');
@@ -18,33 +18,26 @@
           return;
       }
 
-      if (!$dataArray['confirmPassword'] || $dataArray['confirmPassword'] !== $dataArray['password']) {
+      if (!$dataArray['confirmPassword']
+        || $dataArray['confirmPassword'] !== $dataArray['password']) {
           header('HTTP/1.1 400 Password not confirmed');
           echo 'Паролите трябва да съвпадат';
           return;
       }
-      
-      $conn = createPDO();
 
-      $getUserStatement = $conn->prepare("SELECT * from Users where username=?");
-      $getUserStatement->execute([$dataArray['username']]);
+      $userDb = new UserDbConnector();
 
-      if ($getUserStatement->fetch()) {
+      if ($userDb->usernameExists($dataArray['username'])) {
           header('HTTP/1.1 409 Username is taken');
           echo 'Името е заето';
           return;
       }
 
-      $passwordHash = password_hash($dataArray['password'], PASSWORD_DEFAULT);
-      $registerStatement = $conn->prepare("INSERT INTO Users (username, password) VALUES (?, ?)");
-      $registerStatement->execute([$dataArray['username'], $passwordHash]);
-
-      $getUserStatement->execute([$dataArray['username']]);
-      $user = $getUserStatement->fetch();
+      $userDb->createUser($dataArray['username'], $dataArray['password']);
 
       session_start();
       $_SESSION['username'] = $dataArray['username'];
-      $_SESSION['userId'] = $user['id'];
+      $_SESSION['userId'] = $userDb->getUserId($dataArray['username']);
       $_SESSION['session_start'] = time();
 
       echo 'Успешна регистрация';

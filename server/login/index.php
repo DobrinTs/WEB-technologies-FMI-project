@@ -1,5 +1,6 @@
 <?php
-  include('../utils/dbUtils.php');
+  // include('../utils/dbUtils.php');
+  include('../utils/UserDbConnector.php');
 
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $rawData = file_get_contents('php://input');
@@ -18,28 +19,22 @@
           return;
       }
 
-      $conn = createPDO();
-
-      $checkUsernameStatement = $conn->prepare("SELECT * FROM Users WHERE username=?");
-      $checkUsernameStatement->execute([$dataArray['username']]);
-
-      $user = $checkUsernameStatement->fetch();
-      if (!$user) {
+      $userDb = new UserDbConnector();
+      if ($userDb->usernameNotFound($dataArray['username'])) {
           header('HTTP/1.1 400 No such user');
           echo 'Няма потребител с такова име';
           return;
       }
 
-      if (!password_verify($dataArray['password'], $user['password'])) {
+      if ($userDb->passwordDoesNotMatch($dataArray['username'], $dataArray['password'])) {
           header('HTTP/1.1 400 Incorrect password');
           echo 'Неправилна парола';
           return;
       }
 
-
       session_start();
       $_SESSION['username'] = $dataArray['username'];
-      $_SESSION['userId'] = $user['id'];
+      $_SESSION['userId'] = $userDb->getUserId($dataArray['username']);
       $_SESSION['session_start'] = time();
 
       echo 'Успешен вход';

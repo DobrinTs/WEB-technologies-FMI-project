@@ -22,10 +22,10 @@
 
   <nav>
     <ul class="navList">
-      <li class="navListItem"> <a href="" class="navLink">Home</a> </li>
-      <li class="navListItem"> <a href="../newTrip" class="navLink">New Trip</a> </li>
+      <li class="navListItem"> <a href="" class="navLink">Начало</a> </li>
+      <li class="navListItem"> <a href="../newTrip" class="navLink">Ново пътешествие</a> </li>
     </ul>
-    <button type="button" id="logoutButton" class="logoutButton">Logout</button>
+    <button type="button" id="logoutButton" class="logoutButton">Изход</button>
   </nav>
 
 </body>

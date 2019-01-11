@@ -1,8 +1,6 @@
 <?php
   include('../utils/redirects.php');
   redirectIfNotLoggedIn();
-
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -38,7 +36,7 @@
 
       <section class="inputGroup">
         <label for="tripName" class="tripNameLabel">Име на пътешествие: </label>
-        <input type="text" name="tripName" id="tripName" >
+        <input type="text" name="tripName" id="tripName">
       </section>
 
       <section id="stopsSection"></section>
