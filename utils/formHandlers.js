@@ -2,8 +2,8 @@ function handleSubmit(destPath, formData) {
   var json = JSON.stringify(formData);
 
   ajax(destPath, {
-    // success: () => window.location.assign('../home'),
-    success: (tmp) => console.log(tmp),
+    success: () => window.location.assign('../home'),
+    // success: (tmp) => console.log(tmp),
     error: formErrorHandler,
     method: 'POST',
     contentType: 'application/json',

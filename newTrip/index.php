@@ -7,6 +7,7 @@
 
 <head>
   <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>New Trip</title>
   <link href="../home/navAndHeader.css" rel="stylesheet" />
   <link href="../main.css" rel="stylesheet" />
@@ -34,15 +35,23 @@
     <form class="newTripForm" method="post" id="tripForm">
       <strong id="formError" class="hide"></strong>
 
-      <section class="inputGroup">
+      <section class="customSection">
         <label for="tripName" class="tripNameLabel">Име на пътешествие: </label>
-        <input type="text" name="tripName" id="tripName">
+        <input type="text" name="tripName" id="tripName" class="inputField">
       </section>
 
-      <section id="stopsSection"></section>
+      <section id="stopsSection" class="hide">
+        <header>
+          <h2 class="stopsSectionHeader">Въведете име и час за спирките:</h2>
+        </header>
+      </section>
 
-      <button type="button" name="button" id="addStopButton">Добавяне на спирка</button>
-      <button type="submit" name="submitButton">Създаване</button>
+      <button type="button" name="button" id="addButton" class="customButton addButton">
+        Добавяне на спирка
+      </button>
+      <button type="submit" name="submitButton" class="customButton createButton">
+        Създай пътешествието
+      </button>
 
     </form>
   </main>
