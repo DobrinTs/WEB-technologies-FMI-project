@@ -4,7 +4,7 @@
   function redirectIfLoggedIn()
   {
       if (isset($_SESSION['userId'])) {
-          header("Location: ../home");
+          header("Location: ../myTrips");
       }
   }
 

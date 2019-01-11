@@ -9,12 +9,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>New Trip</title>
-  <link href="../home/navAndHeader.css" rel="stylesheet" />
+  <link href="../myTrips/navAndHeader.css" rel="stylesheet" />
   <link href="../main.css" rel="stylesheet" />
   <link href="newTrip.css" rel="stylesheet" />
   <script defer src="../utils/ajax.js"></script>
   <script defer src="../utils/formHandlers.js"></script>
-  <script defer src="../home/logout.js"></script>
+  <script defer src="../myTrips/logout.js"></script>
   <script defer src="newTrip.js"></script>
 </head>
 
@@ -25,7 +25,7 @@
 
   <nav>
     <ul class="navList">
-      <li class="navListItem"> <a href="../home" class="navLink">Начало</a> </li>
+      <li class="navListItem"> <a href="../myTrips" class="navLink">Моите пътешествия</a> </li>
       <li class="navListItem"> <a href="" class="navLink">Ново пътешествие</a> </li>
     </ul>
     <button type="button" id="logoutButton" class="logoutButton">Изход</button>

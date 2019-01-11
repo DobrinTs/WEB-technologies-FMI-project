@@ -30,4 +30,15 @@
               $createStopStatement->execute([$tripId, $stopIndex, $stopName, $stopTime]);
           }
       }
+
+      public function getTripStopsById($tripId)
+      {
+          $getFullTripStatement = $this->conn->prepare("SELECT TripStops.* FROM
+          (SELECT * FROM Trips WHERE ownerId=? AND id=?) AS myTrip
+          JOIN TripStops ON myTrip.id=TripStops.tripId
+          ORDER BY TripStops.stopIndex");
+          $getFullTripStatement->execute([$_SESSION['userId'], $tripId]);
+
+          return $getFullTripStatement->fetchAll(PDO::FETCH_ASSOC);
+      }
   }

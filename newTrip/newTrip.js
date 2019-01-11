@@ -21,7 +21,7 @@ function addStop() {
   var newStopTimeField = document.createElement('input');
   newStopTimeField.setAttribute('type', 'datetime-local');
   newStopTimeField.setAttribute('name', `stop${nextStopIndex}time`);
-  newStopTimeField.setAttribute('class', 'inputField');
+  newStopTimeField.setAttribute('class', 'inputField timeField');
   newStopFieldset.appendChild(newStopTimeField);
 
   stopsSection.appendChild(newStopFieldset);
