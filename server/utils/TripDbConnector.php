@@ -1,6 +1,9 @@
 <?php
   include('dbUtils.php');
-  session_start();
+  include('TripStopsDbConnector.php');
+  if (session_status() !== PHP_SESSION_ACTIVE) {
+      session_start();
+  }
 
   class TripDbConnector
   {
@@ -43,16 +46,16 @@
 
       private function addTripStops($tripId, $dataArray)
       {
-          $createStopStatement = $this->conn->prepare("INSERT INTO TripStops
-            (tripId, stopIndex, placeName, plannedTime) VALUES (?, ?, ?, ?)");
-          $dataArrayKeys = array_keys($dataArray);
-          $stopsKeys = array_slice($dataArrayKeys, 1);
+          $tsDb = new TripStopsDbConnector();
+          $stopsDataArray = array_slice($dataArray, 1);
+          $tsDb->addTripStops($tripId, $stopsDataArray);
+      }
 
-          for ($i = 0; $i < count($stopsKeys); $i+=2) {
-              $stopName = $dataArray[$stopsKeys[$i]];
-              $stopTime = $dataArray[$stopsKeys[$i]];
-              $stopIndex = $i/2 + 1;
-              $createStopStatement->execute([$tripId, $stopIndex, $stopName, $stopTime]);
-          }
+      public function getMyTrips()
+      {
+          $getTripsStatement = $this->conn->prepare("SELECT * FROM Trips
+            WHERE ownerId = ?");
+          $getTripsStatement->execute([$_SESSION['userId']]);
+          return $getTripsStatement->fetchAll(PDO::FETCH_ASSOC);
       }
   }
