@@ -48,7 +48,9 @@
         <section id="tripStops" class="stopsSection"></section>
 
         <form id="saveCommentsForm">
-          <input type="submit"/>
+          <button type="submit" name="button" class="commentsSubmitButton">
+            Запази коментарите
+          </button>
         </form>
       </article>
     </section>

@@ -7,7 +7,7 @@
   display: block;
   width: 30%;
   margin: auto;
-  text-align-last:center;
+  text-align-last: center;
   background-color: #d8c3a5;
   font-weight: bold;
   height: 30px;
@@ -20,6 +20,7 @@
   width: 80%;
   margin: auto;
   margin-top: 10px;
+  margin-bottom: 10px;
   border-radius: 50px;
   padding: 10px;
 }
@@ -41,7 +42,6 @@
   margin: 5px;
   border: 1px solid #8d8e8a;
   border-radius: 50px;
-
 }
 
 .stopArticle h2 {
@@ -55,4 +55,17 @@
   width: 80%;
   border-radius: 20px;
   padding: 5px;
+}
+
+.commentsSubmitButton {
+  margin: auto;
+  display: block;
+  background-color: #9bde5f;
+  border: 1px solid #8d8e8a;
+  border-radius: 50px;
+  height: 30px;
+  width: 30%;
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 18px;
 }
