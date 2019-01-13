@@ -9,6 +9,7 @@ function handleSelectChange(event) {
     showTripArticle();
     setTripHeading(`Пътешествие: ${selectedOption}`);
     clearPreviousStops();
+    hideResultLabel();
 
     ajax(`../server/myTrips/getTripStops.php?tripName=${selectedOption}`, {
       success: addTripStopsToPage,
@@ -20,6 +21,11 @@ function handleSelectChange(event) {
 function clearPreviousStops() {
   var stopsSection = document.getElementById('tripStops');
   stopsSection.innerHTML = "";
+}
+
+function hideResultLabel() {
+  var resultLabel = document.getElementById('submitResultLabel');
+  resultLabel.setAttribute('class', 'hide');
 }
 
 function hideTripArticle() {

@@ -17,9 +17,7 @@ function handleCommentsSubmit(event) {
 
   var json = JSON.stringify(data);
   ajax('../server/myTrips/saveComments.php', {
-    success: function(res) {
-      console.log(res)
-    },
+    success: showSuccessMessage,
     error: function(res) {
       console.error(res)
     },
@@ -27,4 +25,10 @@ function handleCommentsSubmit(event) {
     contentType: 'application/json',
     data: json
   });
+}
+
+function showSuccessMessage() {
+  var resultLabel = document.getElementById('submitResultLabel');
+  resultLabel.setAttribute('class', 'resultLabel');
+  resultLabel.innerText = 'Коментарите са запазени!';
 }

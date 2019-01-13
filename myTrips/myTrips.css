@@ -69,3 +69,12 @@
   font-weight: bold;
   font-size: 18px;
 }
+
+.resultLabel {
+  margin: auto;
+  margin-top: 10px;
+  display: block;
+  text-align: center;
+  color: #e85a4f;
+  font-weight: bold;
+}
