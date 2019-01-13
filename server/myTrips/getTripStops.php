@@ -3,7 +3,7 @@
 
   if ($_SERVER['REQUEST_METHOD'] === 'GET') {
       $tripStopsDb = new TripStopsDbConnector();
-      $tripStops = $tripStopsDb->getTripStopsById($_GET['tripId']);
+      $tripStops = $tripStopsDb->getTripStopsByName($_GET['tripName']);
 
       echo json_encode($tripStops);
   }

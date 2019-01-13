@@ -14,7 +14,8 @@
   <link href="../main.css" rel="stylesheet" />
   <script defer src="../utils/ajax.js"></script>
   <script defer src="logout.js"></script>
-  <script defer src="myTrips.js"></script>
+  <script defer src="fetchMyTrips.js"></script>
+  <script defer src="handleSelectChange.js"></script>
 </head>
 
 <body>
@@ -36,9 +37,14 @@
         <h1 id="tripSectionHeading" class="mainHeading"></h1>
       </header>
       <select id="tripSelect" name="tripSelect" class="hide">
-        <option value="" class="customOption">-----Избери-----</option>
+        <option value="">-----Избери-----</option>
       </select>
-      <article class="hide" id="tripInfo"></article>
+      <article  id="tripInfo">
+        <header>
+          <h1 id="tripArticleHeading" class="tripArticleHeading"></h1>
+        </header>
+        <section id="tripStops"></section>
+      </article>
     </section>
   </main>
 
