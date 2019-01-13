@@ -41,4 +41,17 @@
 
           return $getFullTripStatement->fetchAll(PDO::FETCH_ASSOC);
       }
+
+      public function saveComments($tripName, $comments)
+      {
+          $updateStatement = $this->conn->prepare("UPDATE TripStops SET notes = ?
+            WHERE stopIndex = ? AND tripId IN
+            (SELECT id FROM Trips WHERE ownerId = ? AND name = ?)");
+
+          foreach ($comments as $stopIndex => $note) {
+              $updateStatement->execute(
+                [$note, $stopIndex, $_SESSION['userId'], $tripName]
+              );
+          }
+      }
   }

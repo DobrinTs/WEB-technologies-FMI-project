@@ -29,7 +29,7 @@ function hideTripArticle() {
 
 function showTripArticle() {
   var article = document.getElementById('tripInfo');
-  article.setAttribute('class', 'tripInfo');
+  article.setAttribute('class', 'tripArticle');
 }
 
 function setTripHeading(headingContent) {
@@ -49,9 +49,10 @@ function addTripStopsToPage(stopsJSON) {
 
 function generateStopArticle(stop) {
   var stopArticle = document.createElement('article');
+  stopArticle.setAttribute('class', 'stopArticle');
   addSemanticalHeading(stopArticle, `Спирка ${stop.stopIndex}: ${stop.placeName}`);
   addParagraph(stopArticle, `Планиран час: ${stop.plannedTime}`)
-  addParagraph(stopArticle, `Коментар: ${stop.notes}`)
+  addTextArea(stopArticle, stop);
 
   return stopArticle;
 }
@@ -62,7 +63,6 @@ function addSemanticalHeading(parentElement, headingContent) {
 
   var h2 = document.createElement('h2');
   header.appendChild(h2);
-  h2.setAttribute('class', 'subArticleHeading');
   h2.appendChild(document.createTextNode(headingContent));
 }
 
@@ -71,4 +71,20 @@ function addParagraph(parentElement, paragraphContent) {
   p.appendChild(document.createTextNode(paragraphContent));
 
   parentElement.appendChild(p);
+}
+
+function addTextArea(parentElement, stop) {
+  var textAreaLabel = document.createElement('label');
+  textAreaLabel.innerText = 'Коментари: ';
+
+  var textArea = document.createElement('textarea');
+  textArea.setAttribute('name', `stop${stop.stopIndex}comment`);
+  textArea.setAttribute('form', 'saveCommentsForm');
+  textArea.setAttribute('class', 'commentTextArea');
+  textArea.setAttribute('placeholder', 'Въведи текст тук');
+  textArea.setAttribute('rows', '5');
+  textArea.innerText = stop.notes;
+
+  textAreaLabel.appendChild(textArea);
+  parentElement.appendChild(textAreaLabel);
 }

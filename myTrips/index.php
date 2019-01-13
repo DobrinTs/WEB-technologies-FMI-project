@@ -16,6 +16,7 @@
   <script defer src="logout.js"></script>
   <script defer src="fetchMyTrips.js"></script>
   <script defer src="handleSelectChange.js"></script>
+  <script defer src="saveComments.js"></script>
 </head>
 
 <body>
@@ -39,11 +40,16 @@
       <select id="tripSelect" name="tripSelect" class="hide">
         <option value="">-----Избери-----</option>
       </select>
-      <article  id="tripInfo">
+      <article id="tripInfo" class="hide">
         <header>
           <h1 id="tripArticleHeading" class="tripArticleHeading"></h1>
         </header>
-        <section id="tripStops"></section>
+
+        <section id="tripStops" class="stopsSection"></section>
+
+        <form id="saveCommentsForm">
+          <input type="submit"/>
+        </form>
       </article>
     </section>
   </main>

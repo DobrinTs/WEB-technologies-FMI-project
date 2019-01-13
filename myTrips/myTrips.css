@@ -8,19 +8,13 @@
   width: 30%;
   margin: auto;
   text-align-last:center;
+  background-color: #d8c3a5;
+  font-weight: bold;
+  height: 30px;
+  border-radius: 20px;
 }
 
-.tripArticleHeading {
-  font-size: 20px;
-  text-align: center;
-}
-
-.subArticleHeading {
-  font-size: 18px;
-  text-align: center;
-}
-
-.tripInfo {
+.tripArticle {
   background-color: #d8c3a5;
   border: 1px solid #8d8e8a;
   width: 80%;
@@ -28,4 +22,37 @@
   margin-top: 10px;
   border-radius: 50px;
   padding: 10px;
+}
+
+.tripArticleHeading {
+  margin: 5px 0;
+  font-size: 20px;
+  text-align: center;
+}
+
+.stopsSection {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.stopArticle {
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid #8d8e8a;
+  border-radius: 50px;
+
+}
+
+.stopArticle h2 {
+  font-size: 18px;
+  text-align: center;
+}
+
+.commentTextArea {
+  display: block;
+  margin: auto;
+  width: 80%;
+  border-radius: 20px;
+  padding: 5px;
 }
