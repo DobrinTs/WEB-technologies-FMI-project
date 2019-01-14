@@ -25,7 +25,7 @@
 
           for ($i = 0; $i < count($dataArrayKeys); $i+=2) {
               $stopName = $dataArray[$dataArrayKeys[$i]];
-              $stopTime = $dataArray[$dataArrayKeys[$i]];
+              $stopTime = $dataArray[$dataArrayKeys[$i+1]];
               $stopIndex = $i/2 + 1;
               $createStopStatement->execute([$tripId, $stopIndex, $stopName, $stopTime]);
           }
