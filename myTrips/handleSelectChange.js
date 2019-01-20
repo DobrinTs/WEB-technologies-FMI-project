@@ -56,10 +56,18 @@ function addTripStopsToPage(stopsJSON) {
 function generateStopArticle(stop) {
   var stopArticle = document.createElement('article');
   stopArticle.setAttribute('class', 'stopArticle');
-  addSemanticalHeading(stopArticle, `Спирка ${stop.stopIndex}: ${stop.placeName}`);
-  addParagraph(stopArticle, `Планиран час: ${stop.plannedTime}`)
-  addTextArea(stopArticle, stop);
-  addImage(stopArticle, stop);
+
+  var textSection = document.createElement('section');
+  textSection.setAttribute('class', 'textSection');
+  addSemanticalHeading(textSection, `Спирка ${stop.stopIndex}: ${stop.placeName}`);
+  addParagraph(textSection, `Планиран час: ${stop.plannedTime}`)
+  addTextArea(textSection, stop);
+  stopArticle.appendChild(textSection);
+
+  var imageSection = document.createElement('section');
+  imageSection.setAttribute('class', 'imageSection');
+  addImage(imageSection, stop);
+  stopArticle.appendChild(imageSection);
 
   return stopArticle;
 }
@@ -105,7 +113,14 @@ function addImage(parentElement, stop) {
     error: console.error
   });
   img.setAttribute('id', `stop${stop.id}Image`);
+  img.setAttribute('class', 'stopImage');
   parentElement.appendChild(img);
+
+  var newImageLabel = document.createElement('label');
+  newImageLabel.setAttribute('for', `imageInputStop${stop.id}`);
+  newImageLabel.setAttribute('class', 'newImageLabel');
+  newImageLabel.innerText = 'Качи ново изображение:';
+  parentElement.appendChild(newImageLabel);
 
   var newImageInput = document.createElement('input');
   newImageInput.setAttribute('type', 'file');

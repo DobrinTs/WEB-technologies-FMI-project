@@ -34,28 +34,26 @@
   </nav>
 
   <main>
-    <section>
+    <header>
+      <h1 id="tripSectionHeading" class="mainHeading"></h1>
+    </header>
+    <select id="tripSelect" name="tripSelect" class="hide">
+      <option value="">-----Избери-----</option>
+    </select>
+    <article id="tripInfo" class="hide">
       <header>
-        <h1 id="tripSectionHeading" class="mainHeading"></h1>
+        <h1 id="tripArticleHeading" class="tripArticleHeading"></h1>
       </header>
-      <select id="tripSelect" name="tripSelect" class="hide">
-        <option value="">-----Избери-----</option>
-      </select>
-      <article id="tripInfo" class="hide">
-        <header>
-          <h1 id="tripArticleHeading" class="tripArticleHeading"></h1>
-        </header>
 
-        <section id="tripStops" class="stopsSection"></section>
+      <section id="tripStops" class="stopsSection"></section>
 
-        <form id="saveCommentsForm">
-          <label id="submitResultLabel" class="hide"></label>
-          <button type="submit" name="button" class="commentsSubmitButton">
-            Запази коментарите
-          </button>
-        </form>
-      </article>
-    </section>
+      <form id="saveCommentsForm">
+        <label id="submitResultLabel" class="hide"></label>
+        <button type="submit" name="button" class="commentsSubmitButton">
+          Запази коментарите
+        </button>
+      </form>
+    </article>
   </main>
 
 </body>
