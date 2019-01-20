@@ -99,6 +99,7 @@ function addTextArea(parentElement, stop) {
 function addImage(parentElement, stop) {
   var img = document.createElement('img');
   img.setAttribute('src', '../server/images/' + stop.imageFileName);
+  img.setAttribute('id', `stop${stop.id}Image`);
   parentElement.appendChild(img);
 
   var newImageInput = document.createElement('input');

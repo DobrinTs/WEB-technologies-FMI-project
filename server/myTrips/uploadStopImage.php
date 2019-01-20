@@ -15,9 +15,9 @@
             $_POST['stopId'],
             $fileName
           );
-          echo "Great Success";
+          echo "New file name:$fileName";
       } else {
           header('HTTP/1.1 400 Move uploaded file failed');
-          echo "Possible file upload attack!\n";
+          echo 'Possible file upload attack!';
       }
   }
