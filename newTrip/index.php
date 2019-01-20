@@ -14,7 +14,7 @@
   <link href="newTrip.css" rel="stylesheet" />
   <script defer src="../utils/ajax.js"></script>
   <script defer src="../utils/formHandlers.js"></script>
-  <script defer src="../myTrips/logout.js"></script>
+  <script defer src="../utils/logout.js"></script>
   <script defer src="newTrip.js"></script>
 </head>
 

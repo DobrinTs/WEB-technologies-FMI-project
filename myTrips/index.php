@@ -13,7 +13,7 @@
   <link href="navAndHeader.css" rel="stylesheet" />
   <link href="../main.css" rel="stylesheet" />
   <script defer src="../utils/ajax.js"></script>
-  <script defer src="logout.js"></script>
+  <script defer src="../utils/logout.js"></script>
   <script defer src="fetchMyTrips.js"></script>
   <script defer src="handleSelectChange.js"></script>
   <script defer src="saveComments.js"></script>
