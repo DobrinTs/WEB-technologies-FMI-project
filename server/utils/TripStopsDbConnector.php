@@ -54,4 +54,16 @@
               );
           }
       }
+
+      public function changeStopImage($stopId, $fileName)
+      {
+          $updateStatement = $this->conn->prepare("UPDATE TripStops
+            SET imageFileName = ?
+            WHERE id = ? AND tripId IN (SELECT id FROM Trips WHERE ownerId = ?)
+          ");
+
+          $updateStatement->execute(
+            [$fileName, $stopId, $_SESSION['userId']]
+          );
+      }
   }

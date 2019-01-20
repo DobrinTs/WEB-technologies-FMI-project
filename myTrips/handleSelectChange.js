@@ -59,6 +59,7 @@ function generateStopArticle(stop) {
   addSemanticalHeading(stopArticle, `Спирка ${stop.stopIndex}: ${stop.placeName}`);
   addParagraph(stopArticle, `Планиран час: ${stop.plannedTime}`)
   addTextArea(stopArticle, stop);
+  addImage(stopArticle, stop);
 
   return stopArticle;
 }
@@ -93,4 +94,17 @@ function addTextArea(parentElement, stop) {
 
   textAreaLabel.appendChild(textArea);
   parentElement.appendChild(textAreaLabel);
+}
+
+function addImage(parentElement, stop) {
+  var img = document.createElement('img');
+  img.setAttribute('src', '../server/images/' + stop.imageFileName);
+  parentElement.appendChild(img);
+
+  var newImageInput = document.createElement('input');
+  newImageInput.setAttribute('type', 'file');
+  newImageInput.setAttribute('accept', 'image/png, image/jpeg');
+  newImageInput.setAttribute('id', `imageInputStop${stop.id}`);
+  newImageInput.addEventListener('change', handleImageInputChange, false);
+  parentElement.appendChild(newImageInput);
 }

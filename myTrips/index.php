@@ -17,6 +17,7 @@
   <script defer src="fetchMyTrips.js"></script>
   <script defer src="handleSelectChange.js"></script>
   <script defer src="saveComments.js"></script>
+  <script defer src="imageUpload.js"></script>
 </head>
 
 <body>
