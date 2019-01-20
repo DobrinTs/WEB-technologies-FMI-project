@@ -66,4 +66,18 @@
             [$fileName, $stopId, $_SESSION['userId']]
           );
       }
+
+      public function getFileNameByStopId($stopId)
+      {
+          $selectStatement = $this->conn->prepare("SELECT imageFileName
+            FROM TripStops
+            WHERE id = ? AND tripId IN (SELECT id FROM Trips WHERE ownerId = ?)
+          ");
+
+          $selectStatement->execute(
+            [$stopId, $_SESSION['userId']]
+          );
+
+          return $selectStatement->fetch(PDO::FETCH_ASSOC)['imageFileName'];
+      }
   }

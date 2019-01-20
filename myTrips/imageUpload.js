@@ -17,7 +17,5 @@ function handleImageInputChange(event) {
 
 function refreshImage(stopId, res) {
   var img = document.getElementById(`stop${stopId}Image`);
-  var resSplitted = res.split(':');
-  var imageFileName = resSplitted[1];
-  img.setAttribute('src', '../server/images/' + imageFileName +'?' + new Date().getTime())
+  img.setAttribute('src', res);
 }

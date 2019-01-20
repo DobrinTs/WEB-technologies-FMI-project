@@ -98,7 +98,12 @@ function addTextArea(parentElement, stop) {
 
 function addImage(parentElement, stop) {
   var img = document.createElement('img');
-  img.setAttribute('src', '../server/images/' + stop.imageFileName);
+  ajax(`../server/myTrips/getStopImage.php?stopId=${stop.id}`, {
+    success: function(res) {
+      setImageSrc(img, res)
+    },
+    error: console.error
+  });
   img.setAttribute('id', `stop${stop.id}Image`);
   parentElement.appendChild(img);
 
@@ -108,4 +113,8 @@ function addImage(parentElement, stop) {
   newImageInput.setAttribute('id', `imageInputStop${stop.id}`);
   newImageInput.addEventListener('change', handleImageInputChange, false);
   parentElement.appendChild(newImageInput);
+}
+
+function setImageSrc(img, res) {
+  img.setAttribute('src', res);
 }

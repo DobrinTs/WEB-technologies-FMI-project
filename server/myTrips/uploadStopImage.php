@@ -1,11 +1,9 @@
 <?php
   include('../utils/TripStopsDbConnector.php');
+  $imageGetter = include('../utils/imageGetter.php');
 
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-      $fileNameExploded = explode('.', $_FILES['file']['name']);
-      $fileNameExploded[0] = 'stop' . $_POST['stopId'];
-      $fileName = implode('.', $fileNameExploded);
-
+      $fileName = 'stop' . $_POST['stopId'] . '.jpeg';
       $uploaddir = '../images/';
       $uploadfile = $uploaddir . $fileName;
 
@@ -15,7 +13,7 @@
             $_POST['stopId'],
             $fileName
           );
-          echo "New file name:$fileName";
+          $imageGetter.echoImageBase64($fileName);
       } else {
           header('HTTP/1.1 400 Move uploaded file failed');
           echo 'Possible file upload attack!';
