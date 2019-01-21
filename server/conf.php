@@ -35,7 +35,7 @@ EOT;
     'DB_SERVERNAME' => '127.0.0.1',
     'DB_USERNAME' => 'root',
     'DB_PASSWORD' => '',
-    'DB_NAME' => 'Trips',
+    'DB_NAME' => '81265tripsdb',
     //9. vhost
     'vhosts' => $vhosts,
     'vhosts_ServerAdmin' => 'milenp@fmi.uni-sofia.bg',
